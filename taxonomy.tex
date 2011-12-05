@@ -1,0 +1,706 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newcommand{\ie}{{\textit{i.e.~}}}
+\newcommand{\cf}{{\textit{cf~}}}
+\newcommand{\eg}{{\textit{e.g.~}}}
+
+\title{Building blocks for cooperation: A conceptual framework for human-robot interaction systems}
+
+\author{Felix Warneken et al.}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{abstract}
+
+Cooperation is at the core of human social life. Humans have developed
+cognitive and behavioral skills to interact with each other in various types of
+cooperative activities ranging from simple acts of helping each other to large
+scale cooperative practices that involve division of labor among multiple
+agents. One major challenge for research on human-robot interaction is to build
+artificial agents that can successfully participate in this important area of
+human social life by for instance assisting humans in everyday tasks or
+collaborating safely and flexibly with human agents in a common workspace. Here
+we present an overview and analysis of different types of cooperative behaviors
+that very young children are able to engage. This is motivated by the idea that
+understanding the basic cooperative behaviors and underlying cognitive skills
+of human children enables us to not only identify the building blocks of the
+cooperative behaviors for human development, but also provide us with guidance
+for the kinds of skills that robots should possess to cooperate with humans.
+Therefore, the current paper has three objectives: First, we provide a
+taxonomy of the basic cooperative behaviors in human children,
+distinguishing between prosocial behaviors (helping, sharing, informing)
+and collaboration (especially problem-solving which includes division of
+labor). Second, we provide hypotheses about the underlying cognitive
+representations that humans use to perform these behaviors, namely an
+ability to represent individual psychological states for prosocial
+behaviors and the ability to represent joint intentions for acts of
+collaboration. This is supposed to provide some guidance for the
+implementation of these skills in robots, both concerning the cognitive
+architecture and empirical tests of their skill level. Third, we provide
+illustrative examples of robotic platforms that master some of these
+cooperative behaviors to help assess the state of the art in the field of
+human robot interaction.
+
+\end{abstract}
+
+\section{Introduction}
+
+\begin{itemize}
+
+\item Rationale: Understanding the fundamental cooperative behaviors that young
+children engage in will inform robotics striving to build artificial systems
+for human-robot cooperation. The building blocks of human cooperative behaviors
+observed in children are a good model for the building blocks for robotic
+systems that engage in cooperative interactions with humans.
+
+\item First, our paper provides a descriptive and conceptual analysis of human
+cooperative behaviors.
+
+	\begin{itemize}
+
+	\item We provide descriptions of the basic cooperative behaviors that young
+	children engage in, namely helping, informing, comforting, sharing, and
+	collaborating. These are the first steps that humans take towards becoming
+	the highly cooperative species-members that we see in adult humans.
+
+	\item Our conceptual analysis will be accompanied by examples from
+	empirical studies with children, comprising the experimental scenarios as
+	well as the behavioral measures used to determine the skills that children
+	bring to bear.
+
+	\item Although we suggest that the types of cooperative behaviors that we
+	describe are distinct, we do not claim that these behaviors always occur in
+	isolation. As a matter of fact, due to the complexity of social life,
+	agents might perform several of these cooperative behaviors within during a
+	single episode. Specifically, agents might only succeed if they perform one
+	cooperative behavior as part of a different cooperative behavior (\eg help
+	the other agent as part of a collaborative activity). It could even be
+	argued that one reason why humans (including human children) are so
+	proficient at cooperating exactly because they are able to shift between
+	different types of behaviors. However, the fact that these behaviors can
+	and sometimes have to co-occur certainly doesn{}'t mean that they cannot be
+	differentiated conceptually and might rely on distinct cognitive processes.
+
+	\end{itemize}
+
+\item Second, we provide suggestions for the cognitive architecture needed to
+perform the different cooperative behaviors:
+
+	\begin{itemize}
+
+	\item Our main goal in this paper is a descriptive one. However, we allude
+	to hypotheses about the cognitive capacities that underlie cooperative
+	behaviors in humans as well. 
+
+	\item With the description of the different types of cooperative behaviors
+	we intend to facilitate research to test hypotheses about the underlying
+	cognitive structure in humans. We hope that these broad strokes might be
+	helpful for roboticists in thinking about ways of implementing these
+	behaviors in robots.
+
+	\item It should be noted that we do not propose that there could be a
+	single or best way of implementing these capacities in robots. Depending on
+	whether the engineer{}'s goal is re-create human-like cognition as an
+	avenue to better understand humans or to create an artificial agent that
+	just shows analogous behaviors originating in very different processes, our
+	descriptions might provide normative guidance or just more or less helpful
+	heuristics.
+
+	\item We provide a typology that can be regarded as being located at a
+	medium level of abstraction. 
+
+		\begin{itemize}
+
+		\item Our typology is more general than concrete scenarios or tasks
+		such as moving around a chair to enter through a door or moving around
+		a pillar to move down a narrow hallway) and more specific than global
+		challenges (such as moving through space or giving objects)
+
+		\item Ideally, this will facilitate the design of different platforms
+		that are comparable despite the specifics of the implementation and the
+		concrete environment and objects involved, allowing for a meaningful
+		comparison across different robotic platforms with regard to their
+		capacity to perform successfully in relevant cooperative interactions
+		(Dautenhahn, 2010, p. 700).
+
+		\item In short, this might help in achieving the goal to develop
+		artificial systems that display skills which are generalizable across
+		different specific situations.
+
+		\end{itemize}
+
+	\end{itemize}
+
+\end{itemize}
+
+We provide illustrative examples from recent human-robot interaction
+
+\begin{itemize}
+
+\item We provide illustrative examples of state-of-the-art robotic agents that
+have some of the components necessary to socially interact with humans in one
+or several of the cooperative interactions described in the taxonomy
+
+\item This, we hope, will inform the reader about possible ways of implementing
+these capacities in robots
+
+\item and obviously also identify gaps in the area of human-robot interaction
+and thus function as a guideline for future research.
+
+\item Where are we in the field and where should we go next?
+
+\end{itemize}
+
+\section{A descriptive and conceptual analysis of cooperative behaviors}
+
+We use the term ``cooperation{}'' to refer to social behaviors that are -- at
+least in part {}-  aimed at facilitating another agent{}'s goal achievement, in
+contrast to purely individual behaviors that are aimed only at fulfilling the
+agent{}'s own individual goal. Examples for the latter would be actions such as
+obtaining an object for oneself, changing ones own emotional state, or
+competing with others\footnote{ It should be noted that similar terms have been
+used in biology differentiate social behaviors along the lines of fitness costs
+and benefits that are conveyed to actors and recipients of social behaviors. By
+contrast, our definition focuses on the influence of concrete actions and
+psychological states (\ie benefits in terms of whether behaviors allow or
+hinder agents to achieve their goals) and we remain agnostic about the impact
+of these behaviors on evolutionary fitness.\par }. Cooperation comprises
+\textit{prosocial behaviors} that are aimed at acting on behalf of another
+agent{}'s individual goal and \textit{collaborative behaviors} in which
+multiple agents jointly interact to achieve a joint goal. We will first define
+and provide examples for prosocial behaviors, followed by a more thorough
+discussion of collaborative behaviors as a form of cooperation that is distinct
+from purely prosocial behaviors.
+
+\subsection{Prosocial behaviors}
+
+\begin{figure}
+\center
+\includegraphics[width=0.9\columnwidth]{figs/prosocial_behaviours.png}
+\caption{Prosocial behaviors. Thick black arrows denote prototypical type of
+intervention for respective type of problem. Thin grey arrows denote
+alternative intervention strategies.}
+\label{fig-prosocial}
+\end{figure}
+
+\subsubsection{Definitions}
+
+One important distinction is between problem recognition and type of
+intervention. In order to act prosocially, the donor has to be able to identify
+the problem that the recipient is facing. Once the problem is identified, the
+donor must then decide whether to act on the other{}'s behalf, and what
+strategy to use in order to intervene appropriately.  The distinction between
+problem recognition and intervention is essential because either of these
+processes might account for the failure to respond prosocially. Specifically,
+an agent might fail to act prosocially because she did not realize that there
+was a problem in the first place, or because she identified the problem, but is
+unwilling or unable to act accordingly. An agent might not be able to read the
+emotional cues which signal pain or distress in the recipient, and thus see no
+reason to intervene. Or the agent might be very well aware of the other{}'s
+distress, but not know how to alleviate it. Thus, even if for the sake of the
+argument assume that a person is generally motivated to act prosocially,
+prosocial behavior can only occur if the donor possesses the cognitive and
+behavioral capacities to both recognize the problem and have the necessary
+skills to intervene. This is illustrated in Figure~\ref{fig-prosocial}, in
+which at time 1, a recipients intended goal (what the person wants to be the
+case) and the actual state of the world do not align. A potential prosocial
+donor has to be able to identify this problem of a goal-world mismatch, and
+then choose an appropriate type of intervention. We distinguish four types of
+problems that agents might encounter: An obstacle to the successful completion
+of an instrumental act (such as an object is out-of-reach, an obstacle
+obstructs a path, something does not open, etc.), a lack of information (an
+object is misplaced, one cannot remember a person{}'s name, etc.), a negative
+emotion (someone is hurt or distressed about an event), or lack of resource
+(\eg food, money, or a tool to complete a task). Once the type of problem is
+identified, the donor can choose to act prosocially in various ways. For
+example, the most straightforward way for the donor to intervene on behalf of
+another person{}'s failed action-goal is to take an action herself (such as
+handing an out-of-reach object or pull harder at the cork screw when a friend
+failed to open a wine bottle).  Similarly, when another person fails to find
+the desired object, the most salient type of intervention is to inform the
+person about the actual location of the object. This is denotated in our
+diagram with thick black arrows. However, donors might have different types of
+intervention at their disposal to intervene with various types of goals. For
+example, when the person cannot find her pen, the donor might lend her his own
+rather than informing her about the fact that her pen is in the other room.
+This is represented by the various thin grey arrows in
+Figure~\ref{fig-prosocial}. Ultimately, a successful intervention should
+contribute to a reduction in the gap between the recipient{}'s goal and the
+actual state of the world: the out-of-reach object is within reach, the person
+can now see the location of the misplaced object, she feels less sad or is less
+poor.
+
+Taken together, we identify four prototypical prosocial behaviors with roots in
+early human development: 
+
+\begin{itemize}
+
+\item In \textit{instrumental helping} situations, an agent performs a concrete
+act that contributes to the recipient{}'s fulfillment of the recipient{}'s
+individual action-goal. What elicits the helping behavior and serves as the
+criterion for the successful completion of the helping act is a conative state
+of the recipient: the unfulfilled goal which through the helper{}'s
+intervention is fulfilled at the end of the interaction. Examples are holding a
+door open for someone whose hands are full (helping her complete the goal of
+entering a room) or giving an out-of-reach object the recipient is
+unsuccessfully reaching for (helping her obtain an otherwise unobtainable
+object).
+
+\item \textit{Informing} refers to situations in which the problem for the
+recipient is due to a lack of information that would allow her to complete an
+action, satisfy her need, alleviate her distress, etc. What elicits informing
+is the recognition on the side of the cooperator that the recipient lacks a
+certain piece of information. Typical situations might be the inability to find
+a misplaced object, not finding food during foraging, or desperately looking
+for mom after hurting ones finger. Thus, in these cases an actor can intervene
+by providing the missing piece of information, by \eg pointing to the
+location of the object the person is looking for or telling her about the
+location.
+
+\item In \textit{comforting} situations (often also called empathic
+intervention or emotional helping), rather than helping with a concrete
+action-goal, the purpose is to change the recipients (negative) emotional
+state. Thus, what elicits the helping act is the negative emotional state of
+the recipient, and the act is terminated once the negative emotional state is
+successfully altered, resulting in a neutral or positive emotional state.
+Examples are hugging someone who is in distress (to comfort the other) or
+fixing a broken object that was the cause of the distress.
+
+\item \textit{Sharing} differs from helping in that rather than performing an
+action that facilitates the recipient{}'s goal-completion, the actor provides a
+concrete resources. Specifically, the problem for the recipient consists in the
+lack of a certain resource (such as food) and the actor intervenes by giving up
+(part of) a resource that A has in his or her possession. Concerning the
+elicitation of a sharing act, one can differentiate between \textit{active
+sharing}, which involves cases in which agent A actively transfers the resource
+from the actor to the recipient.  \textit{Passive sharing} characterizes
+situations in which the recipient is taking the object that the actor has in
+its possession, with the actor noticing, but tolerating this transfer. 
+
+\end{itemize}
+
+
+\subsubsection{Empirical studies with young children}
+
+{\bfseries\itshape The main question here is how much detail we should provide
+here. We could focus on the main results ({}`children help by picking up
+objects from 14 months of age{}') or provide a fair amount of detail about the
+setups and measures (perhaps including photos or schematic drawings). You guys
+should tell us what you think is most desirable for roboticists reading this
+paper. Maybe they want a short review of the different tasks that exist or
+it{}'s enough to have very short summaries and they can then look up the
+original papers?}
+
+\begin{itemize}
+
+\item Instrumental helping 
+
+	\begin{itemize}
+
+	\item From 14 months on, infants provide help for others, \eg, open doors
+	for another person when her hands are occupied, or fetch objects which are
+	out of a needy person{}'s reach (\eg, Warneken \& Tomasello, 2006)
+
+	\item With about three years of age, children provide help to a peer more
+	often in a collaboration that outside of it.  This will be addressed in the
+	following (2.2 Collaborative behaviors) in more detail
+
+	\end{itemize}
+
+\item Comforting
+
+	18- and 24-month-old children display concern and emotional distress when
+	another person is harmed (\eg, when someone had just destroyed her artwork)
+	and help or share with this person more than with a person who had not been
+	harmed (\eg,Vaish, Carpenter, \& Tomasello, 2009) 
+
+\item Informing  
+
+	infants at around one year of age use pointing gestures
+	\textit{informative}ly, \ie in order to indicate to another person the
+	location of the object the person is looking for (\eg, Liszkowski,
+	Carpenter, Striano, \& Tomasello, 2006) 
+
+\item Sharing
+
+	\begin{itemize}
+
+	\item Infants sometimes give toys to their parents (\eg, Hay, 1979) and
+	peers (Hay et al., 1991), presumably mainly to share interest and fun. 
+
+	\item However, usually sharing in those early situations is not costly, \ie
+	infants actually do not have to give up the toy for good. Costly sharing is
+	more difficult {}- when given a windfall of items and asked to share, even
+	3- and 4-year-olds often keep the majority for themselves (even though they
+	do give away some; Lane \& Coon, 1972; Fehr, Bernhard, \& Rockenbach, 2008;
+	Moore, 2009; Rochat et al., 2009). 
+
+	\item One exception is the context of collaboration that encourages equal
+	sharing already among 3-year-olds (Warneken, Lohse, Melis, \& Tomasello,
+	2010; Hamann, Warneken, Greenberg, \& Tomasello, 2011). For example, when
+	pairs of 3-year-old children work together on a task by pulling in ropes
+	jointly in order to gain toys, they make sure that both of them receive an
+	equal share in the end -- and they do so more often after collaboration
+	than in parallel work situations, where they still sit next to each other
+	but pull only their own individual rope, or in windfall situations, where
+	they receive rewards without contributing any work. 
+
+	\end{itemize}
+
+\end{itemize}
+
+\subsubsection{Prosocial behaviors: Conclusion}
+
+These prosocial behaviors are aimed at another person{}'s individual goal,
+emotion or epistemic state. Even though one could say that for the helping act,
+the helper adopts the other person{}'s goal of retrieving an object or removing
+an obstacle to let the other person enter or the helper resonates with the
+negative emotional state of the other person when empathizing, the critical
+piece is the other person{}'s individual goal or the other person{}'s emotional
+state that lead to the actor{}'s intervention in the first place and is also
+the criterion against which to decide whether the intervention was successfully
+completed. For example, if the recipient for some reason now decides to no
+longer want the dropped object because she found a different one, it is also no
+longer necessary for the actor to try to retrieve it. In other terms, even if
+the goals match in a given situation, the actor{}'s goal depends on the
+recipient{}'s individual goal, rather than existing independently. Similarly,
+in cases of emotional helping, what should determine whether comforting
+behaviors are still appropriate is the emotional state of the recipient and not
+the emotional state of the intervening actor.
+
+This has potentially important implications for the decision about the
+cognitive architecture that needs to be implemented in robotic systems.
+Specifically, according to this model, the representation of individual
+psychological states (\ie individual goals, emotions, or epistemic states) is
+necessary and sufficient to successfully engage in these prosocial behaviors
+concerning the social-cognitive capacities required. 
+
+On the other hand, the representation of individual psychological states is not
+sufficient to engage in sophisticated collaborative activities as are typical
+in human social interaction. Specifically, a different class of cooperative
+behaviors are collaborative activities in which two or more agents perform
+actions together to bring about a joint goal. This is particularly important to
+differentiate from cases of instrumental helping, in which the helper
+identifies the other person{}'s individual goal, whereas in cases of
+collaboration, two agents co-represent a joint goal and execute their
+respective actions in order to achieve it. 
+
+\subsection{Collaborative behaviors}
+
+\subsubsection{Definitions}
+
+An important form of cooperative behavior in humans are cases in which
+individuals pool their efforts to produce outcomes that neither individual
+would be able to achieve alone. This is apparent in large scale collaborative
+practices such as building a skyscraper, which depends upon division of labor
+among a group of individuals, but also for simpler tasks such as lifting a
+large sofa. In either case, the task is achieved as the common effect of
+several individuals. One can in principle distinguish between cases in which
+pooling efforts is necessary (no single individual is strong enough to lift the
+dining table) from cases in which it is more efficient (carrying a mattress
+alone is cumbersome). For the current purposes, however, we are concerned with
+describing interactions that can be considered collaborative as based upon the
+way in which agents interact, whether collaboration is necessary or
+facilitative.
+
+One major question is what enables individuals to engage in these collaborative
+activities. Importantly, research shows that many human collaborative
+activities are not simply the summative effect of individual actions, but that
+individual actions are interrelated in specific ways, creating a distinct from
+of human cooperation. We will use the term ``joint collaborative activity{}''
+to denote this type of social interaction. Roughly speaking, in joint
+collaborative activities, individuals perform their individual action-plans
+(intentions) in pursuit of a joint goal. For example, it is my goal to wash the
+lettuce and your goal to make a dressing, but both actions are executed in
+pursuit of the goal of preparing a salad. It has been argued that the ability
+to engage in joint collaborative activities is an essential if not
+species-unique feature of human social interaction which is based upon a
+specific form of cognitive representation: joint intentions (Tomasello et al.,
+2005). The collaborative activities that we observe in humans are often based
+upon these joint intentions, which are markedly different from the
+representation of individual intentions underlying other types of social
+interaction that are more widespread in the animal kingdom. Roughly speaking,
+individual and joint intentions\footnote{ Different authors use different terms
+to speak of basically the same concept: joint, shared, collective intentions or
+we-intentions. We prefer joint because it highlights the interlocking of
+intentions (\ie action-plans) and because in other discussions of human
+cooperation, the term ``shared intention'' has not been clearly differentiated
+from ``sharing'' in the sense of resource sharing. Namely, having shared
+intentions is not akin to having intentions to share.\par } can be
+differentiated as follows:
+
+\textit{Individual intention} =
+
+I intend to bring about goal x by means of y.
+
+or
+
+You intend to bring about goal x by means of y.
+
+\textit{Joint intention} = 
+
+We intend to bring about goal x by means of me doing y$_1$ and you
+doing y$_2$.
+
+In the behavioral sciences, it is often difficult to determine whether an
+activity that is performed by multiple agents should be conceived of as a joint
+collaborative activity that is based upon joint intentions or merely as a the
+common outcome of individual intentions. For example, each individual agent
+might be acting on an individual intention towards an individual goal, and even
+though the outcome emerges from the combined efforts of the agents, they are
+not necessarily acting jointly. In other words, what qualifies as a plural
+activity (Butterfill, 2011) does not necessarily qualify as a joint
+collaborative activity. \textit{(give example?)} These issues have created
+debate in psychology, cognitive science and among philosophers, trying to best
+define the conceptual criteria for joint collaborative activity and devising
+empirical methods to capture the underlying cognitive processes (Bratman,
+Gilbert, Tollefsen, Pacherie, Searle, Tomasello{\dots}). In addition, it has to
+be elaborated how these sophisticated underlying cognitive processes are
+applicable to young children. Even at an early age, children show very
+competent social interactions with others, which appear on its face
+intentional, joint collaborative action long before these skills can be
+empirically demonstrated (for a review see Brownell 2011). 
+
+Based in particular upon especially the work by Bratman (1992, 2009) and
+Tomasello (Tomasello et al., 2005), we speak of collaboration proper when
+(roughly) the following criteria are met:
+
+\begin{enumerate}
+
+\item \textit{Mutual responsiveness}: We are mutually responsive to each other
+in the sense that my actions are in part determined by your actions (and vice
+versa).
+
+\item \textit{Joint goal}: We both have a joint goal and thus represent our
+respective individual actions as part of an overarching goal.
+
+\item \textit{Commitment to joint goal}: We mutually coordinate our plans of
+actions (our intentions) in pursuit of this goal. This entails the mutual
+commitment to perform (a) ones individual actions in a way that does not
+interfere with the other{}'s actions and (b) provide help when the other agent
+encounters problems that prevent her from performing her actions.
+
+\end{enumerate}
+
+These criteria provide guidance for behavioral tests to determine whether
+certain social behaviors that humans (and other animals) engage in can be
+characterized as joint collaborative activity. Moreover, it is a tool to
+describe how the capacity to engage in collaboration emerges over development.
+In recent years, several experimental studies have been conducted to
+investigate the development of collaboration in young children. We will provide
+a summary of these studies in order to show which basic abilities are present
+early in life, and to give illustrative examples of the kind of experimental
+situations that have been created to empirically test which behavioral skills
+and cognitive representations they utilize to collaborate. We will focus on
+studies in which agents engage in instrumental acts, such as collaborative
+problem-solving or interactive games because they represent an important part
+of early collaboration and seem most relevant for the kinds of actions that are
+relevant for human-robot interaction\footnote{ Thus, in parallel to the
+different forms of prosocial behaviors aimed at influencing individual states
+described above (instrumental helping, sharing, informing), one might find
+equivalent forms in collaboration in all three domains (such as collaborative
+resource sharing without an instrumental component or can describe the exchange
+of information as a collaborative act).}. 
+
+\subsubsection{Empirical studies with children}
+
+{\bfseries\itshape
+Same question here: how much detail should we provide?}
+
+\paragraph{Mutual responsiveness and behavioral coordination}
+
+\begin{itemize}
+
+\item With a very skillful and competent partner like an adult, young children
+(1-year-olds) acquire their first experience on tightly coordinated actions in
+time and space being executed by two different bodies and directed towards
+external objects (Bakeman and Adamson 1984; Hay 1979; Eckerman et al. 1989;
+Warneken and Tomasello 2007)
+
+\item Especially interesting are novel situations in which children cannot rely
+on practices routines (scripts). Such novel tasks were developed by Warneken et
+al. (2006), where two individuals had to coordinate predefined roles such that
+the activity could be executed together. The tasks required a partner and
+correct patio-temporal coordination. In one task, a mechanical cylinder had to
+be pushed upwards to make a toy accessible to the partner. In another task, a
+cube was thrown into one of two available tubes and had to be caught by the
+partner, operating also on that selected tube. 18-month-olds interacted rather
+uncoordinated with the adult while 24-month-olds were already quite coordinated
+and also anticipated the partners actions.
+
+\item Starting at 30 months of age, pairs of same-aged children (peers) are
+able to anticipate the partner and to act in accordance to the others spectrum
+of possible actions in a novel cooperative problem-solving task (Brownell 1990,
+1991). 
+
+\item A cognitively more challenging task is to be able to plan the
+coordination of roles in anticipation of the action execution. Therefore,
+Steinwender et al. (under review) tested whether children are capable of
+dividing up the labor ahead of a task, demonstrating that they are able to
+represent \textit{both} roles in their interrelation and within one
+representational format. This study indicates that 3-year-olds are able to plan
+ahead a collaborative task only under certain conditions, whereas 5-year-olds
+proficiently divide up the roles. In their task, peers had to correctly select
+two different tools in order to subsequently jointly manipulate a
+problem-solving apparatus. 3-year-olds were only successfully selecting the
+correct tools when the partner had already selected his tool and thus
+determined the choice ha had to make. But when the first selecting individual
+had to predict what the partner would do before he could make his won
+individual plan, 3-year-olds were unsuccessful.
+
+\end{itemize}
+
+\paragraph{Representation of joint intentions and commitment to joint goal}
+
+\begin{itemize}
+
+\item Warneken et al. (2006) investigated whether children will re-engage their
+partner (joint goal) when he quits the interaction or continue playing
+individually (no joint goal). Already at 18 months children had formed a joint
+goal and communicated in order to bring to partner back into the game. These
+results are supported by the result that 21- and 27-month old children
+differentiating between a partner who is unwilling or unable to continue,
+focusing not on the behavioral outcome alone, but taking into account the
+intentions underlying the behavior (Warneken, Graefenhain, Tomasello 2011).
+Thus, in a collaborative activity, children appear to remind the partner of his
+contribution to the joint activity, and take into account the partner{}'s
+intention to participate.
+
+\item The question whether children are committed to the joint collaboration
+and will thus support their partner when he needs help or cannot complete his
+role, had been investigated by taking into account children{}'s ability to help
+the partner completing his role or even taking over the other{}'s role. The
+rationale behind is that the overall goal is to do something together and thus
+the roles of both partner will be represented within one representational
+format (Tomasello et al. 2005). When it is known, how the roles interrelate and
+influence each other, then it should be no problem at all to help the partner
+with his role, take over the partner{}'s role and even to plan how the labor is
+going to be divided between the partners.
+
+\item Hamann et al. (2011) tested whether children themselves are committed to
+the joint goal (rather than reminding the partner of the partner{}'s commitment
+to the joint goal). In this study, peers faced the situation that during a
+necessary collaborative interaction towards two individual rewards, one reward
+was accessible for one child before the other could complete her role and
+receive her reward. Children working with a shared goal in mind, where each
+role is part of one overarching goal, will continue their part until the
+partner had achieved her share. At 3.5 years of age, children were found to
+have established a joint goal and continued the interaction, while
+2.5-year-olds did not support their partner until they received their reward.
+
+\end{itemize}
+
+\subsubsection{Summary}
+
+Collaborative behaviors as defined by Bratman (1992) and Tomasello et al.
+(2005) require sophisticated representational skills that go beyond the
+representation of individual goals and execution of individual action-plans.
+Recent advances in developmental psychology provide novel experimental
+paradigms to assess to what extent children have the capacities to engage in
+collaborative interactions and whether they are based upon joint intentions. 
+
+\section{Implementations in robots}
+
+{\bfseries\itshape We would first re-iterate why we think that these
+developmental studies can provide some guidance for appropriate scenarios,
+behavioral measures, and perhaps cognitive architecture in robotics.}
+
+{\bfseries\itshape This is where you guys come in: what examples should we
+include here? We think that we have to restrict it to illustrative examples and
+cannot provide a comprehensive overview of ALL the robots and all the task that
+exist in the field of robotics.}
+
+\subsection{Examples from current robotic platforms}
+
+XXX
+
+\section{Glossary}
+%TODO: turn it into a real Latex glossary
+
+\paragraph{Goal-directed action}
+
+\textbf{Goal}: We refer to goal as a (mental) representation of a desired state
+of the environment. Usually, this is a change in the environment, \ie the
+desired outcome of an action. But the goal can also be to preserve a certain
+state of the environment. In our terminology, `goal{}' is not the same as a
+goal-object. 
+
+\textbf{Intention}: An intention is the plan of action the agent chooses and
+commits herself to in pursuit of a goal.  The plan of action thus encompasses
+both the goal and the means to achieve it. The intention can be a purely
+individual intention, in which the agent only represents his own means to
+achieve an individual goal or the individual actions can also be part of a
+joint intention (see below). 
+
+\textbf{Outcome}: The outcome or result of an action refers to the actual and
+observable environmental state post action. Diagnostic situations are those in
+which the goal (the internally represented and intended outcome) and the actual
+outcome (the observable state of the environment) do not match.
+
+\begin{itemize}
+
+\item \textbf{Success} = The action changed the state of the environment so that
+outcome and goal now correspond.  This usually leads to feelings of
+satisfaction by the agent.
+
+\item \textbf{Failed attempt} = The action did not result in a change of state of the
+environment. That is, outcome and goal do not match due to the lack of change
+regarding the critical component of the action. This is usually accompanied by
+expressions of disappointment.
+
+\item \textbf{Accident} = The action resulted in a change of the environment, but
+caused an unintended outcome. That is, outcome and goal do not match because
+the action lead to a wrong outcome. The agent usually responds with surprise.
+
+\end{itemize}
+
+For details see Tomasello et al. 2005.\textit{(We could add a figure similar to
+that by Tomasello)}
+
+\paragraph{Structural aspects of collaborative activities}
+
+\paragraph{Parallel vs. complementary actions}
+
+\textit{Parallel actions}= Both agents perform the same kind of action.
+
+Example 1: We hold the two ends of a heavy board and lift it together.
+
+Example 2: We pull two parallel ropes to move a heavy objects towards us.
+
+Example 3: We both play on our drums.
+
+\textit{Complementary} actions = Both agents perform different but interrelated
+actions.
+
+Example 1: I hold the frame steady so that you can nail it to the wall.
+
+Example 2: I hold and turn the table top so that you can attach the four legs
+one by one.
+
+
+\section{Role reversal and ``bird's eye view''}
+
+In a collaborative activity with two complementary actions, both agents can
+perform either action and reverse them if necessary. For example: I can hold
+the frame and you use the hammer to nail it to the wall or you hold the frame
+and I use the hammer. The idea is that if two agents are able to engage in
+role-reversal, it shows that they not only have a representation of their own
+action, but also of the other person's action as related to ones own action.
+Thus, both agents have an agent-independent representation of the collaborative
+activity with two social roles and either agent can adopt either role. In other
+words, they look down at the social interaction from a bird's eye perspective.
+
+Steinwender et al (in preparation) used complementary problem-solving tasks and
+reported that the ability to flexibly switch roles is already present at 18
+months but also that the amount of role reversal increase significantly to 24-
+and  to 36-months of age.
+
+\end{document}
