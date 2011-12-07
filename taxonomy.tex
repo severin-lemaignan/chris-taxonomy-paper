@@ -4,6 +4,7 @@
 \usepackage[english]{babel}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{paralist} % for inline lists
 
 \usepackage[draft]{fixme} % to add side notes to other editors
 
@@ -391,11 +392,11 @@ describing interactions that can be considered collaborative as based upon the
 way in which agents interact, whether collaboration is necessary or
 facilitative.
 
-One major question is what enables individuals to engage in these collaborative
-activities. Importantly, research shows that many human collaborative
+One major question is \emph{What enables individuals to engage in these collaborative
+activities}. Importantly, research shows that many human collaborative
 activities are not simply the summative effect of individual actions, but that
 individual actions are interrelated in specific ways, creating a distinct from
-of human cooperation. We will use the term ``joint collaborative activity''
+of human cooperation. We will use the term \emph{joint collaborative activity}
 to denote this type of social interaction. Roughly speaking, in joint
 collaborative activities, individuals perform their individual action-plans
 (intentions) in pursuit of a joint goal. For example, it is my goal to wash the
@@ -403,32 +404,26 @@ lettuce and your goal to make a dressing, but both actions are executed in
 pursuit of the goal of preparing a salad. It has been argued that the ability
 to engage in joint collaborative activities is an essential if not
 species-unique feature of human social interaction which is based upon a
-specific form of cognitive representation: joint intentions (Tomasello et al.,
+specific form of cognitive representation: \emph{joint intentions} (Tomasello et al.,
 2005). The collaborative activities that we observe in humans are often based
 upon these joint intentions, which are markedly different from the
 representation of individual intentions underlying other types of social
 interaction that are more widespread in the animal kingdom. Roughly speaking,
-individual and joint intentions\footnote{ Different authors use different terms
+individual and joint intentions\footnote{Different authors use different terms
 to speak of basically the same concept: joint, shared, collective intentions or
 we-intentions. We prefer joint because it highlights the interlocking of
 intentions (\ie action-plans) and because in other discussions of human
-cooperation, the term ``shared intention'' has not been clearly differentiated
-from ``sharing'' in the sense of resource sharing. Namely, having shared
+cooperation, the term \textit{shared intention} has not been clearly differentiated
+from \textit{sharing} in the sense of resource sharing. Namely, having shared
 intentions is not akin to having intentions to share.\par } can be
 differentiated as follows:
 
-\textit{Individual intention} =
+{\bf Individual intention}:
+{\it I intend to bring about goal x by means of y.} or {\it You intend to bring about goal x by means of y.}
 
-I intend to bring about goal x by means of y.
-
-or
-
-You intend to bring about goal x by means of y.
-
-\textit{Joint intention} = 
-
-We intend to bring about goal x by means of me doing y$_1$ and you
-doing y$_2$.
+{\bf Joint intention}:
+{\it We intend to bring about goal x by means of me doing y$_1$ and you
+doing y$_2$.}
 
 In the behavioural sciences, it is often difficult to determine whether an
 activity that is performed by multiple agents should be conceived of as a joint
@@ -438,7 +433,7 @@ might be acting on an individual intention towards an individual goal, and even
 though the outcome emerges from the combined efforts of the agents, they are
 not necessarily acting jointly. In other words, what qualifies as a plural
 activity (Butterfill, 2011) does not necessarily qualify as a joint
-collaborative activity. \textit{(give example?)} These issues have created
+collaborative activity\fxnote{Give example?}. These issues have created
 debate in psychology, cognitive science and among philosophers, trying to best
 define the conceptual criteria for joint collaborative activity and devising
 empirical methods to capture the underlying cognitive processes (Bratman,
@@ -449,24 +444,27 @@ competent social interactions with others, which appear on its face
 intentional, joint collaborative action long before these skills can be
 empirically demonstrated (for a review see Brownell 2011). 
 
-Based in particular upon especially the work by Bratman (1992, 2009) and
+Based in particular upon the work by Bratman (1992, 2009) and
 Tomasello (Tomasello et al., 2005), we speak of collaboration proper when
 (roughly) the following criteria are met:
 
 \begin{enumerate}
 
-\item \textit{Mutual responsiveness}: We are mutually responsive to each other
+\item{\it Mutual responsiveness}: We are mutually responsive to each other
 in the sense that my actions are in part determined by your actions (and vice
 versa).
 
-\item \textit{Joint goal}: We both have a joint goal and thus represent our
+\item{\it Joint goal}: We both have a joint goal and thus represent our
 respective individual actions as part of an overarching goal.
 
-\item \textit{Commitment to joint goal}: We mutually coordinate our plans of
+\item{\it Commitment to joint goal}: We mutually coordinate our plans of
 actions (our intentions) in pursuit of this goal. This entails the mutual
-commitment to perform (a) ones individual actions in a way that does not
-interfere with the other's actions and (b) provide help when the other agent
+commitment to perform 
+\begin{inparaenum}
+\item ones individual actions in a way that does not
+interfere with the other's actions and \item provide help when the other agent
 encounters problems that prevent her from performing her actions.
+\end{inparaenum}
 
 \end{enumerate}
 
@@ -479,11 +477,13 @@ investigate the development of collaboration in young children. We will provide
 a summary of these studies in order to show which basic abilities are present
 early in life, and to give illustrative examples of the kind of experimental
 situations that have been created to empirically test which behavioural skills
-and cognitive representations they utilize to collaborate. We will focus on
+and cognitive representations they utilize to collaborate.
+
+We will focus on
 studies in which agents engage in instrumental acts, such as collaborative
 problem-solving or interactive games because they represent an important part
 of early collaboration and seem most relevant for the kinds of actions that are
-relevant for human-robot interaction\footnote{ Thus, in parallel to the
+relevant for human-robot interaction\footnote{Thus, in parallel to the
 different forms of prosocial behaviours aimed at influencing individual states
 described above (instrumental helping, sharing, informing), one might find
 equivalent forms in collaboration in all three domains (such as collaborative
@@ -492,40 +492,37 @@ of information as a collaborative act).}.
 
 \subsubsection{Empirical studies with children}
 
-{\bfseries\itshape
-Same question here: how much detail should we provide?}
+\fxnote{Same question here: how much detail should we provide?}
 
 \paragraph{Mutual responsiveness and behavioural coordination}
 
-\begin{itemize}
-
-\item With a very skillful and competent partner like an adult, young children
+With a very skillful and competent partner like an adult, young children
 (1-year-olds) acquire their first experience on tightly coordinated actions in
 time and space being executed by two different bodies and directed towards
 external objects (Bakeman and Adamson 1984; Hay 1979; Eckerman et al. 1989;
 Warneken and Tomasello 2007)
 
-\item Especially interesting are novel situations in which children cannot rely
+Especially interesting are novel situations in which children cannot rely
 on practices routines (scripts). Such novel tasks were developed by Warneken et
 al. (2006), where two individuals had to coordinate predefined roles such that
 the activity could be executed together. The tasks required a partner and
-correct patio-temporal coordination. In one task, a mechanical cylinder had to
+correct spatio-temporal coordination. In one task, a mechanical cylinder had to
 be pushed upwards to make a toy accessible to the partner. In another task, a
 cube was thrown into one of two available tubes and had to be caught by the
 partner, operating also on that selected tube. 18-month-olds interacted rather
 uncoordinated with the adult while 24-month-olds were already quite coordinated
 and also anticipated the partners actions.
 
-\item Starting at 30 months of age, pairs of same-aged children (peers) are
+Starting at 30 months of age, pairs of same-aged children (peers) are
 able to anticipate the partner and to act in accordance to the others spectrum
 of possible actions in a novel cooperative problem-solving task (Brownell 1990,
 1991). 
 
-\item A cognitively more challenging task is to be able to plan the
+A cognitively more challenging task is to be able to plan the
 coordination of roles in anticipation of the action execution. Therefore,
 Steinwender et al. (under review) tested whether children are capable of
 dividing up the labor ahead of a task, demonstrating that they are able to
-represent \textit{both} roles in their interrelation and within one
+represent \emph{both} roles in their interrelation and within one
 representational format. This study indicates that 3-year-olds are able to plan
 ahead a collaborative task only under certain conditions, whereas 5-year-olds
 proficiently divide up the roles. In their task, peers had to correctly select
@@ -536,13 +533,9 @@ determined the choice ha had to make. But when the first selecting individual
 had to predict what the partner would do before he could make his won
 individual plan, 3-year-olds were unsuccessful.
 
-\end{itemize}
-
 \paragraph{Representation of joint intentions and commitment to joint goal}
 
-\begin{itemize}
-
-\item Warneken et al. (2006) investigated whether children will re-engage their
+Warneken et al. (2006) investigated whether children will re-engage their
 partner (joint goal) when he quits the interaction or continue playing
 individually (no joint goal). Already at 18 months children had formed a joint
 goal and communicated in order to bring to partner back into the game. These
@@ -554,18 +547,18 @@ Thus, in a collaborative activity, children appear to remind the partner of his
 contribution to the joint activity, and take into account the partner's
 intention to participate.
 
-\item The question whether children are committed to the joint collaboration
+The question whether children are committed to the joint collaboration
 and will thus support their partner when he needs help or cannot complete his
 role, had been investigated by taking into account children's ability to help
 the partner completing his role or even taking over the other's role. The
 rationale behind is that the overall goal is to do something together and thus
 the roles of both partner will be represented within one representational
-format (Tomasello et al. 2005). When it is known, how the roles interrelate and
+format (Tomasello et al. 2005). When it is known how the roles interrelate and
 influence each other, then it should be no problem at all to help the partner
 with his role, take over the partner's role and even to plan how the labor is
 going to be divided between the partners.
 
-\item Hamann et al. (2011) tested whether children themselves are committed to
+Hamann et al. (2011) tested whether children themselves are committed to
 the joint goal (rather than reminding the partner of the partner's commitment
 to the joint goal). In this study, peers faced the situation that during a
 necessary collaborative interaction towards two individual rewards, one reward
@@ -575,8 +568,6 @@ role is part of one overarching goal, will continue their part until the
 partner had achieved her share. At 3.5 years of age, children were found to
 have established a joint goal and continued the interaction, while
 2.5-year-olds did not support their partner until they received their reward.
-
-\end{itemize}
 
 \subsubsection{Summary}
 
